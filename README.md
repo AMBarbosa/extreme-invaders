@@ -1,7 +1,8 @@
 # Extreme invaders: data and scripts
 
-This is the companion repository for the article:
-<b>Baquero R.A., Barbosa A.M., Ayllón D., Guerra C., Sánchez E., Araújo M.B. & Nicola G.G. (under review) Potential distributions of invasive vertebrates in the Iberian Peninsula under projected changes in extreme climate events</b>.
+This is the companion repository for the article:<br><br>
+<big><b>Baquero R.A., Barbosa A.M., Ayllón D., Guerra C., Sánchez E., Araújo M.B. & Nicola G.G. (under review) <i>Potential distributions of invasive vertebrates in the Iberian Peninsula under projected changes in extreme climate events<7i></b>.</big>
+<br><br>
 
 The repository contains:
 - the values of the regional climatic extreme <b>variables</b> computed by members of the team;
