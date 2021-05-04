@@ -1,3 +1,7 @@
+# R scripts for the article:
+# Baquero R.A., Barbosa A.M., Ayllón D., Guerra C., Sánchez E., Araújo M.B. & Nicola G.G. Potential distributions of invasive vertebrates in the Iberian Peninsula under projected changes in extreme climate events.
+
+
 source("00_packages.R")
 
 
@@ -55,7 +59,7 @@ choroLayer(spdf = utm10, df = dat, spdfid = "utm10", dfid = "utm10", var = "latU
 # of distributions of birds, mammals, and amphibians & reptiles
 # (available from their sources upon acceptance of authors' conditions)
 # added more data from a range of additional sources
-# (see Appendix S1 of the paper)
+# (see Appendix S1 of the article)
 # with this script, we will add data from two sources: GBIF (https://www.gbif.org) and Ascensao et al. (https://neobiota.pensoft.net/article/55597/)
 
 

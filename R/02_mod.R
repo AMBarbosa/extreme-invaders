@@ -1,3 +1,7 @@
+# R scripts for the article:
+# Baquero R.A., Barbosa A.M., Ayllón D., Guerra C., Sánchez E., Araújo M.B. & Nicola G.G. Potential distributions of invasive vertebrates in the Iberian Peninsula under projected changes in extreme climate events.
+
+
 source("00_packages.R")
 source("01_data.R")
 
@@ -49,8 +53,8 @@ brks <- seq(0, 1, 0.01)
 brks_leg <- seq(0, 1, 0.1)
 spectral_leg <- colorRampPalette(spectral0)(length(brks_leg))
 
-#jpeg("../images/Fig_S2_spatial_trends.jpg", width = 800, height = 900)
-par(mar = c(0, 0, 1.5, 0), mfrow = arrangePlots(length(spp)))
+#jpeg("images/Fig_S2_spatial_trends.jpg", width = 800, height = 900)
+par(mar = c(0, 0, 1.5, 0), mfrow = modEvA::arrangePlots(length(spp)))
 for (i in 2:ncol(tsa)) {
   spc <- substr(names(tsa)[i], 1, 2)
   choroLayer(spdf = utm10, df = tsa, spdfid = "utm10", dfid = "utm10", var = names(tsa)[i], border = NA, legend.pos = NA, col = spectral, breaks = brks)
@@ -137,7 +141,7 @@ blocks <- readRDS("R/cvblocks.rds")
 blocks$folds
 blocks$foldID
 
-#pdf("../images/Fig_S1_CVblocks.pdf")
+#pdf("images/Fig_S1_CVblocks.pdf")
 #plot(blocks)
 #dev.off()
 
@@ -775,7 +779,7 @@ for (spc in spp) {
 
 length(PCAs)  # 6
 lapply(PCAs, summary)
-par(mfrow = arrangePlots(length(PCAs)), mar = c(2, 2, 1, 1))
+par(mfrow = modEvA::arrangePlots(length(PCAs)), mar = c(2, 2, 1, 1))
 lapply(PCAs, plot)
 lapply(PCAs, biplot)
 sort(sapply(PCAs, function(x) summary(x)$importance["Proportion of Variance", "PC1"]))
@@ -990,7 +994,7 @@ brks2 <- seq(-0.3, 0.3, by = 0.05)
 
 ramp_posneg <- colorRampPalette(c('blue', 'gray90', 'red')) (length(brks2))
 
-par(mfrow = arrangePlots(length(spp)), mar = c(0, 0, 2, 0))
+par(mfrow = modEvA::arrangePlots(length(spp)), mar = c(0, 0, 2, 0))
 for (i in 2:ncol(preds_PCAweighted_change)) {
   choroLayer(spdf = utm10, df = preds_PCAweighted_change, spdfid = "utm10", dfid = "utm10", var = names(preds_PCAweighted_change)[i], border = NA, breaks = brks2, legend.values.rnd = 2, legend.title.txt = "", col = ramp_posneg)
   title(species[species$spp == names(preds_PCAweighted_change)[i], "species"], font.main = 3, cex.main = 2.5)
@@ -1019,7 +1023,7 @@ names(utm10)
 change_interp <- slot(utm10, "data")[ , "utm10", drop = FALSE]
 
 change_columns <- grep("_change", names(utm10))
-par(mfrow = arrangePlots(length(spp)))
+par(mfrow = modEvA::arrangePlots(length(spp)))
 gc()
 n <- 0
 for (f in change_columns) {
@@ -1060,7 +1064,7 @@ names(preds_PCAweighted)
 names(preds_PCAweighted_fut)
 
 #pdf("images/Fig_4_range_change_barplots.pdf", width = 4, height = 6)
-par(mfrow = arrangePlots(length(spp)), mar = c(6, 3, 2, 1))
+par(mfrow = modEvA::arrangePlots(length(spp)), mar = c(6, 3, 2, 1))
 for (i in 2:ncol(preds_PCAweighted)) {
   fuzzyRangeChange(preds_PCAweighted[ , i], preds_PCAweighted_fut[ , i], ylim = c(-0.65, 0.65), las = 2, col = "grey50", border = NA)
   title(species[species$spp == substr(names(change_interp)[i], 1, 2), "species"], font.main = 3, cex.main = 1.3)
