@@ -60,13 +60,14 @@ choroLayer(spdf = utm10, df = dat, spdfid = "utm10", dfid = "utm10", var = "latU
 # (available from their sources upon acceptance of authors' conditions)
 # added more data from a range of additional sources
 # (see Appendix S1 of the article)
-# with this script, we will add data from two sources: GBIF (https://www.gbif.org) and Ascensao et al. (https://neobiota.pensoft.net/article/55597/)
+# with this script, we will add data from two sources:
+# GBIF (https://www.gbif.org)
+# and Ascensao et al. (https://neobiota.pensoft.net/article/55597/)
 
 
 # ADD OCCURRENCE DATA FROM GBIF ####
 
-gbif <- read.csv("data/GBIFdownload_2020-12-01.csv", sep = "\t", as.is = TRUE)
-# citation: GBIF.org (09 April 2021) GBIF Occurrence Download https://doi.org/10.15468/dl.6633ct
+gbif <- read.csv("data/GBIFdownload_2020-12-01.csv", sep = "\t", as.is = TRUE)  # citation for these data: GBIF.org (2020) GBIF Occurrence Download, 1 December 2020. DOI: https://doi.org/10.15468/dl.kw2dcy
 
 head(gbif)
 names(gbif)

@@ -1,23 +1,26 @@
+NOTE: THIS IS THE ORIGINAL INFORMATION ON THE VARIABLES IN SPANISH,
+THE FINAL CODES AND MEANINGS OF THE VARIABLES (IN ENGLISH) ARE PROVIDED IN TABLE 1 OF THE ARTICLE,
+,
 "La hoja CLIMÁTICAS contiene todos los datos climáticos para las cuadrículas de Portugal, España y Andorra. NO INCLUYE:
 -Archipiélagos, ni Ceuta ni Melilla
 -Las cuadrículas de costa con más del 50 % de mar
 -Las cuadrículas de intersección de los Husos 29, 30 y 31
 -Las cuadrículas que tienen una superficie inferior a 10x10 Km 
 -Las de la punta de Portugal (punta de Lisboa) que no tienen datos climáticos
--Las duplicadas en la frontera España-Portugal",,,,,,,,,,,,
-,,,,,,,,,,,,
-VARIABLES CLIMÁTICAS,,,,,,,,,,,,
-"A partir de la lista de índices de cambio climático de eventos extremos http://etccdi.pacificclimate.org/list_27_indices.shtml  se seleccionaron las variables, en consenso con los físicos.",,,,,,,,,,,,
-Periodo 1971-2000 (presente) y 2021-2050 (futuro),,,,,,,,,,,,
-"Cinco modelos: REM, WRA, WRB, PRO y MM5",,,,,,,,,,,,
-,,,,,,,,,,,,
-"Leyenda (+ modelo climático - REM, WRA, WRB, PRO, MM5)",Variable,,,,,,,,,,,
-Tmax30,Número de días anuales con temperatura máxima diaria ? 30 ºC.,,,,,,,,,,,
-Tmax30nd5d,Número de periodos anuales de cinco días consecutivos con temperatura máxima ? 30 ºC.,,,,,,,,,,,
-TmaxAvemin,Número de días al año en que la temperatura máxima diaria es ? que la media anual de la temperatura mínima diaria.,,,,,,,,,,,
-TmaxAvemin5d,Número de periodos anuales de cinco días consecutivos en que la temperatura máxima diaria es ? que la media anual de la temperatura mínima diaria.,,,,,,,,,,,
-PrAvemax,Número de días anuales en que la precipitación diaria es ? que la media anual de la precipitación diaria.,,,,,,,,,,,
-PrAvemax5d,Número de periodos anuales de cinco días consecutivos en que la precipitación diaria es ? que la media anual de la precipitación diaria.,,,,,,,,,,,
-Pr1mm,Número de días al año en que la precipitación diaria es ? 1 mm.,,,,,,,,,,,
-Pr1mm5d,Número de periodos anuales de cinco días consecutivos en que la precipitación diaria es ? 1 mm.,,,,,,,,,,,
-Hum_relat,Humedad relativa (%).,,,,,,,,,,,
+-Las duplicadas en la frontera España-Portugal",
+,
+VARIABLES CLIMÁTICAS,
+"A partir de la lista de índices de cambio climático de eventos extremos http://etccdi.pacificclimate.org/list_27_indices.shtml  se seleccionaron las variables, en consenso con los físicos.",
+Periodo 1971-2000 (presente) y 2021-2050 (futuro),
+"Cinco modelos: REM, WRA, WRB, PRO y MM5",
+,
+"Leyenda (+ modelo climático - REM, WRA, WRB, PRO, MM5)",Variable
+Tmax30,Número de días anuales con temperatura máxima diaria >= 30 ºC.
+Tmax30nd5d,Número de periodos anuales de cinco días consecutivos con temperatura máxima >= 30 ºC.
+TmaxAvemin,Número de días al año en que la temperatura máxima diaria es <= que la media anual de la temperatura mínima diaria.
+TmaxAvemin5d,Número de periodos anuales de cinco días consecutivos en que la temperatura máxima diaria es <= que la media anual de la temperatura mínima diaria.
+PrAvemax,Número de días anuales en que la precipitación diaria es >= que la media anual de la precipitación diaria.
+PrAvemax5d,Número de periodos anuales de cinco días consecutivos en que la precipitación diaria es >= que la media anual de la precipitación diaria.
+Pr1mm,Número de días al año en que la precipitación diaria es <= 1 mm.
+Pr1mm5d,Número de periodos anuales de cinco días consecutivos en que la precipitación diaria es <= 1 mm.
+Hum_relat,Humedad relativa (%).
