@@ -1,7 +1,7 @@
 # Extreme invaders: data and scripts
 
 This is the companion repository for the article:<br><br>
-<big><b>Baquero R.A., Barbosa A.M., Ayllón D., Guerra C., Sánchez E., Araújo M.B. & Nicola G.G. (under review) <i>Potential distributions of invasive vertebrates in the Iberian Peninsula under projected changes in extreme climate events</i></b>.</big>
+<big><b>Baquero R.A., Barbosa A.M., Ayllón D., Guerra C., Sánchez E., Araújo M.B. & Nicola G.G. (under review) <i>Potential distributions of invasive vertebrates in the Iberian Peninsula under projected changes in climate extreme events</i></b>.</big>
 <br><br>
 
 We modelled the distributions of six species based on five regional climate models and their projections for a set of variables representing extreme conditions. We used an ensemble of four modelling methods: Generalized Linear Models (GLM), Generalized Additive Models (GAM), Random Forests, and Bayesian Additive Regression Trees (BART). We assessed model performance using spatial block cross-validation and metrics focused on discrimination and calibration. We finally extrapolated the well-performing models to future climate scenarios, and then quantified and mapped the changes.

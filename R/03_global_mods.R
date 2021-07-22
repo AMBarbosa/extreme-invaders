@@ -4,7 +4,7 @@
 
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
-source("Rsc00_packages.R")
+source("00_packages.R")
 
 
 # IMPORT WORLDCLIM VARIABLES ####
@@ -108,7 +108,7 @@ names(mods) <- names(prob) <- names(fav) <- spp
 
 
 # create raster with variables only on study area for prediction:
-utm10 <- st_read("../maps/utm10.shp")
+utm10 <- st_read("../maps/utm10_ib.gpkg")
 plot(utm10[ , 1])
 utm10 <- st_transform(utm10, st_crs(wclim_stack))
 wclim_ib <- mask(crop(wclim_stack, utm10, snap = "out"), utm10)
@@ -138,6 +138,17 @@ names(fav_stack) <- names(fav)
 spectral0 <- rev(brewer.pal(10, "Spectral"))  # max was 11
 spectral <- colorRampPalette(spectral0)(100)
 
+
 plot(fav_stack, col = spectral, axes = FALSE, box = FALSE, zlim = c(0, 1))
 
+fav_stack <- fav_stack[[c(1, 3, 5, 2, 4, 6)]]
 
+
+jpeg("Fig_S3-22_global_mods.jpg", width = 800, height = 900)
+par(mfrow = arrangePlots(nlayers(fav_stack)), mar = c(1, 0, 2, 0))
+for (f in 1:nlayers(fav_stack)){
+  leg <- ifelse(f == 6, TRUE, FALSE)
+  plot(fav_stack[[f]], col = spectral, axes = FALSE, box = FALSE, zlim = c(0, 1), legend = leg, legend.width = 2)
+  title(gsub("\\.", " ", names(fav_stack)[f]), font.main = 3, cex.main = 3)
+}
+dev.off()
