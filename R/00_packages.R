@@ -14,6 +14,9 @@ library(randomForest)
 library(embarcadero)
 library(leaflet)
 library(gstat)
+library(ncf)
 
-# library(sf)
-# library(fasterize)
+# 03_global_mods:
+library(data.table)
+library(maps)
+library(sf)

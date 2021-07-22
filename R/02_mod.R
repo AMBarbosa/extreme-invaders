@@ -1,5 +1,5 @@
 # R scripts for the article:
-# Baquero R.A., Barbosa A.M., Ayllón D., Guerra C., Sánchez E., Araújo M.B. & Nicola G.G. Potential distributions of invasive vertebrates in the Iberian Peninsula under projected changes in extreme climate events.
+# Baquero R.A., Barbosa A.M., Ayllón D., Guerra C., Sánchez E., Araújo M.B. & Nicola G.G. Potential distributions of invasive vertebrates in the Iberian Peninsula under projected changes in climate extreme events.
 
 
 source("00_packages.R")

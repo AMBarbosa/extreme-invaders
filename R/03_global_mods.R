@@ -1,3 +1,7 @@
+# R scripts for the article:
+# Baquero R.A., Barbosa A.M., Ayllón D., Guerra C., Sánchez E., Araújo M.B. & Nicola G.G. Potential distributions of invasive vertebrates in the Iberian Peninsula under projected changes in climate extreme events.
+
+
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 source("Rsc00_packages.R")
