@@ -205,6 +205,15 @@ n_vars * n_meths * n_spp  # 96 - ok
 gc()
 
 
+# make empty list to receive the BART models:
+bart_mods <- vector("list", n_spp)
+for(b in 1:length(bart_mods)) bart_mods[[b]] <- vector("list", length(climods))
+bart_mods
+names(bart_mods) <- spp
+for(b in 1:length(bart_mods)) names(bart_mods[[b]]) <- climods
+bart_mods
+
+
 # loop to compute the models and calculate variable importance (MAY TAKE A FEW HOURS!):
 start_time_init <- Sys.time()
 n <- 0
@@ -260,6 +269,8 @@ for (spc in spp)  for (climod in climods) {
   # try also weighting presences and absences equally (as random forests don't deal well with imbalanced data), although ultimately we need to use the originally imbalanced data so that predicted probabilities are commensurable:
   #mod_rf <- randomForest(form_rf, data = dat_pres, na.action = na.exclude, sampsize = rep(sum(dat_train[ , spc], na.rm = TRUE), 2), ntree = 1000)  # 'sampsize' to avoid randomforest problems with imbalanced data: https://stats.stackexchange.com/questions/163251/creating-a-test-set-with-imbalanced-data/163567#163567
   mod_bart <- bart(y.train = dat_pres[ , spc], x.train = dat_pres[ , vars_chosen], keeptrees = TRUE, verbose = FALSE)
+  invisible(mod_bart$fit$state)
+  bart_mods[[spc]][[climod]] <- mod_bart
 
   var_contribs[var_contribs$species == spc & var_contribs$method == "GLM", climod] <- coefficients(mod_glm)[-1]  # excludes the intercept
   var_contribs[var_contribs$species == spc & var_contribs$method == "GAM", climod] <- coefficients(mod_gam)[-1]  # excludes the intercept
@@ -1070,3 +1081,66 @@ for (i in 2:ncol(preds_PCAweighted)) {
   title(species[species$spp == substr(names(change_interp)[i], 1, 2), "species"], font.main = 3, cex.main = 1.3)
 }
 #dev.off()
+
+
+# RESIDUAL SPATIAL AUTOCORRELATION ####
+
+## get model residuals for BART (the best-performing thus highest-weight method in our analysis):
+
+names(bart_mods)
+names(bart_mods$Aa)
+names(bart_mods$Aa$REM)
+
+# create dataframe to receive the model residuals:
+mod_residuals <- dat_pres[ , c("utm10", "utm10x", "utm10y", spp)]
+
+# complete the dataframe with a loop:
+for (s in spp) for (climod in climods) {
+  mymod <- bart_mods[[s]][[climod]]
+  mymod_probit <- fitted(mymod, sample = "train", type = "bart")  # similar to "type = link" in predict.glm; see ?bart
+  mod_residuals[ , paste(s, climod, "resid", sep = "_")] <- mod_residuals[ , s] - mymod_probit
+}
+
+head(mod_residuals)
+sapply(mod_residuals, summary)
+
+
+# map the residuals:
+
+names(mod_residuals)
+par(mfrow = c(3, 2))
+for (r in grep("resid", names(mod_residuals))) {
+  choroLayer(spdf = utm10, df = mod_residuals, spdfid = "utm10", dfid = "utm10", var = names(mod_residuals)[r], border = NA, legend.pos = NA, col = spectral)
+  title(names(mod_residuals)[r])
+}
+
+
+# https://mgimond.github.io/Spatial/spatial-autocorrelation-in-r.html
+
+# get neighbours list from utm10 map:
+nb <- spdep::poly2nb(utm10)
+
+# complement it with the spatial weights:
+lw <- spdep::nb2listw(nb, zero.policy = TRUE)
+
+# get residuals in the map's attribute table:
+slot(utm10, "data") <- data.frame(slot(utm10, "data"), mod_residuals[match(as.character(slot(utm10, "data")$utm10), as.character(mod_residuals$utm10)), grep("_resid", names(mod_residuals))])
+names(utm10)
+
+
+# compute Moran's I using MC simulations for each model:
+
+residual_columns <- grep("_resid", names(utm10))
+moran_tests <- vector("list", length(residual_columns))
+names(moran_tests) <- names(utm10)[residual_columns]
+
+for(r in residual_columns) {
+  name <- names(utm10)[r]
+  moran_tests[[name]] <- moran.mc(utm10@data[ , name], lw, nsim = 999, na.action = na.omit, zero.policy = TRUE)
+}
+
+moran_tests
+moran_tests[[1]]
+str(moran_tests[[1]])
+
+sort(sapply(moran_tests, `[[`, "p.value"))
