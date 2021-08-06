@@ -1,0 +1,15 @@
+Type,Code ,Definition
+variable,Tmax30,Annual number of days with maximum daily temperature over 30 ºC
+variable,Tmax30nd5d,Number of annual periods of five consecutive days with maximum daily temperature over 30 ºC
+variable,TmaxAvemin,Annual number of days with maximum temperature under the mean annual value of minimum daily temperature
+variable,TmaxAvemin5d,Number of annual periods of five consecutive days with maximum daily temperature under the mean annual value of minimum daily temperature
+variable,PrAvemax,Annual number of days with daily precipitation over mean annual daily precipitation 
+variable,PrAvemax5d,Number of annual periods of five consecutive days with daily precipitation over mean annual daily precipitation 
+variable,Pr1mm,Annual number of days with daily precipitation under 1 mm
+variable,Pr1mm5d,Number of annual periods of five consecutive days with daily precipitation under 1 mm
+variable,HumRel,Relative humidity (%)
+climate model,REM,UAHE-REM
+climate model,MM5,UMUR-MM5
+climate model,PRO,UCLM-PRO
+climate model,WRA,UCAN-WRA
+climate model,WRB,UCAN-WRB
