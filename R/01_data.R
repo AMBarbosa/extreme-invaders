@@ -14,6 +14,8 @@ plot(utm10)
 # IMPORT TABLE WITH THE VALUES OF THE VARIABLES ON THIS GRID ####
 
 dat <- read.csv("data/variables_Baquero_et_al.csv")
+# citation for these data:
+# Baquero R.A., Barbosa A.M., Ayllón D., Guerra C., Sánchez E., Araújo M.B. & Nicola G.G. (2021) Environmental data from: Potential distributions of invasive vertebrates in the Iberian Peninsula under projected changes in climate extreme events. Dryad, DOI https://doi.org/10.5061/dryad.rxwdbrv8x
 head(dat)
 names(dat)
 names(dat) <- gsub(pattern = "\\.", replacement = "_", x = names(dat))
@@ -61,8 +63,8 @@ choroLayer(spdf = utm10, df = dat, spdfid = "utm10", dfid = "utm10", var = "latU
 # added more data from a range of additional sources
 # (see Appendix S1 of the article)
 # with this script, we will add data from two sources:
-# GBIF (https://www.gbif.org)
-# and Ascensao et al. (https://neobiota.pensoft.net/article/55597/)
+# GBIF (https://www.gbif.org; DOI https://doi.org/10.15468/dl.kw2dcy)
+# and Ascensao et al. 2021 (https://neobiota.pensoft.net/article/55597/)
 
 
 # ADD OCCURRENCE DATA FROM GBIF ####

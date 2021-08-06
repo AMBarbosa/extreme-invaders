@@ -8,7 +8,7 @@ We modelled the distributions of six species based on five regional climate mode
 
 The repository contains:
 - the values of the regional climatic extreme <b>variables</b> computed by members of the team (https://doi.org/10.5061/dryad.rxwdbrv8x);
-- the redistributable parts of the <b>species occurrence data</b>, namely those currently available on GBIF or published in data papers (see references in the article!);
-- the <b>R scripts</b> which reproduce our complete analysis and resulting plots. The results won't be exactly the same if you run them, as in the article we used several additional data on species occurrence which should be obtained directly from their original sources upon acceptance of their conditions.
+- the redistributable parts of the <b>species occurrence data</b>, namely those currently available on GBIF or published in data papers (citations included in the script and in the article);
+- the <b>R scripts</b> which reproduce our complete analysis and resulting plots. The results won't be exactly the same if you run them, as in the article we used several additional data on species occurrence which need to be obtained directly from their original sources upon acceptance of their conditions.
 
 A link to the article will be provided here once it is published.
